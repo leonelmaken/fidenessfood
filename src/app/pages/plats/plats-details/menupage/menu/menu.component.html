@@ -1,0 +1,22 @@
+<div class="container  mt-5 mb-5">
+   <div class="row">
+     <div class="my-2">
+    <div class="row">
+      <div class="col-md-8 form-group">
+         <input type="text" class="form-control" [ngModel]="platFilter" (ngModelChange)="platFilter = $event">
+      </div>
+    </div>
+  </div>
+      <div class="col-lg-4" *ngFor="let plat of filterFoods">
+          <div class="foodbox">
+             <img src="{{plat.foodImg}}">
+                <h1 *ngIf="plats && plats.length > 0">{{plat.foodName}}</h1>
+                <p>{{plat.foodDetails}}</p>
+                <p>{{plat.foodCalorie}} Kcl</p>
+                <app-star-rating [rating]="plat.rating"  (starRatingClicked)="receiveRatingClicked($event)"></app-star-rating>
+                <br/>
+                <a class="buybtn" [routerLink]="['/menu',plat.id]">Buy Now &nbsp;<i class="bi bi-bag"></i></a>
+          </div>
+      </div>
+   </div>
+</div>
